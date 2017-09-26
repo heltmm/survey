@@ -1,0 +1,6 @@
+<h1>Available Surveys</h1>
+<% @surveys.each do |survey| %>
+  <% if survey.done == true %>
+    <li><a href="/user/survey/<%=survey.id%>"><%= survey.name %> <%= survey.description %></a></li>
+  <% end %>
+<% end %>

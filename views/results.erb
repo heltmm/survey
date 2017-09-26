@@ -1,0 +1,8 @@
+<%= @survey.name %>
+
+<% Question.where(survey_id: @survey.id).find_each do |question| %>
+  <h2><%= question.ask %></h2>
+  <% Answer.where(question_id: question.id).find_each do |answer| %>
+    <li><%= answer.response %></li>
+  <% end %>
+<% end %>

@@ -1,0 +1,29 @@
+<h1><%= @survey.name %> <%= @survey.description %></h1>
+
+<h2>Questions:</h2>
+<% Question.where(survey_id: @survey.id).find_each do |question| %>
+
+  <li><%= question.ask %> <a href="/question/delete/<%= question.id %>">DELETE</a></li>
+
+
+<% end %>
+
+
+
+<form action="/survey/<%= @survey.id %>" method="post">
+  <label for="ask">Type a single answer question</label>
+  <input type="text" name="ask" class="form-control">
+  <button type="submit" class='btn btn-success'>Add question</button>
+</form><br>
+
+<form action="/survey/finished/<%= @survey.id %>" method="post">
+  <button type="submit" class='btn btn-info'>Submit Survey</button>
+</form><br>
+
+<form action="/survey/results/<%= @survey.id%>" method="get">
+  <button type="submit" class='btn btn-primary'>See Current Results</button>
+</form><br>
+
+<form action="/survey/delete/<%= @survey.id%>" method="post">
+  <button type="submit" class='btn btn-danger'>Delete Survey</button>
+</form>

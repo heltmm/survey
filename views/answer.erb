@@ -1,0 +1,14 @@
+<h1><%= @survey.name %> <%= @survey.description %></h1>
+
+
+
+<form action="/choice/<%= @question.id %>" method="post">
+
+<h2><%= @question.ask %></h2>
+
+
+    <label for=""></label>
+    <input type="text" name="choice" value="" class='form-control'>
+
+    <button type="submit" name="button">Add Choice</button>
+</form>

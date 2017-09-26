@@ -1,0 +1,10 @@
+<h1><%= @survey.name %> <%= @survey.description %></h1>
+
+<h2>Questions:</h2>
+<form class="" action="/survey/results/<%= @survey.id %>" method="post">
+  <% Question.where(survey_id: @survey.id).find_each do |question| %>
+    <li><%= question.ask %></li>
+    <input type="text" name="<%= question.ask %>" class='form-control' required>
+  <% end %>
+  <button type="submit" class='btn btn-success'>Answser Survey</button>
+</form>
